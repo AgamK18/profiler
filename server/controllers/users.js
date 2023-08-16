@@ -31,12 +31,12 @@ export const addRemoveConnection = async (req, res) => {
         const userRes = await User.find({id});
         const connectionRes = await User.find({"id": connectionId});
 
-        const user = userRes[0];
-        const connection = connectionRes[0];
-        
-        console.log(user);
-        console.log(connection);
+        const { user } = userRes[0];
+        const { connection } = connectionRes[0];
+        const userConnections = userRes[0].connections;
+        const connectionConnections = connectionRes[0].connections
 
+  
         if (user.connections.includes(connectionId)) {
             user.connections = user.connections.filter((id) => id !== connectionId);
             connection.connections = connection.connections.filter((id) => id !== id);
@@ -44,6 +44,7 @@ export const addRemoveConnection = async (req, res) => {
             user.connections.push(connectionId);
             connection.connections.push(id);
         }
+      
         await user.save();
         await connection.save();
     

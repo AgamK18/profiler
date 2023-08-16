@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Navbar from '@/components/Navbar';
 
 const Profile = () => {
   const router = useRouter();
@@ -12,25 +13,21 @@ const Profile = () => {
   
   const loggedInUser = useSelector((state)=>state);
   const isAuth = Boolean(loggedInUser.reducer.token);
-  const user = loggedInUser.reducer.user;
-  
-  //console.log(loggedInUser);
 
   if (!id) {
     return <p>Loading...</p>;
   }
-
+  
   if (!isAuth) {
     router.push('/');
     return null;
   }
-  
 
   return (
     <main>
+      <Navbar/>
       <div>{id}</div>
-      {/* <div onClick={router.push(`/connections?id=${id}`)}>Connections</div> */}
-      <Link href={`/connections?id=${id}`}>Connections</Link>
+      
     </main>
   )
 }

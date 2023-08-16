@@ -24,6 +24,7 @@ export const register = async (req, res) => {
             password: passwordHash,
             picturePath,
             phone,
+            connections: [{id}],
         });
         const savedUser = await newUser.save();
         res.status(201).json(savedUser);

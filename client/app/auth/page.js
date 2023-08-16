@@ -2,6 +2,7 @@
 import react from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import axios from 'axios'
 
 const SignUp = () => {
 
@@ -15,8 +16,8 @@ const SignUp = () => {
 
   const handleSignup = async (e) => {
 		try{
-            e.preventDefault();
-			const res = await axios.post("http://localhost:3001/authUser/register", {
+            e.preventDefault();connections
+			const res = await axios.post("http://localhost:3001/auth/register", {
 				id, password, email, phone, name
 			})
 			console.log(res);

@@ -3,6 +3,7 @@ import React from 'react'
 import { useSearchParams } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation'
+import Navbar from '@/components/Navbar';
 
 const Connections = () => {
   
@@ -26,7 +27,10 @@ const Connections = () => {
   
 
   return (
-    <div>{user.about}</div>
+    <div>
+      <Navbar/>
+      <div>{user.about}</div>
+    </div>
   )
 }
 
